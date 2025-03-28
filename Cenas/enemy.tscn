@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://jxgjm8yl5b4i"]
+
+[ext_resource type="Script" uid="uid://la7gorucpmje" path="res://Cenas/enemy.gd" id="1_o8lmi"]
+[ext_resource type="Texture2D" uid="uid://bq2xhgfx515dd" path="res://art/enemyFlyingAlt_1.png" id="1_poyks"]
+[ext_resource type="Texture2D" uid="uid://c5pvsk1hoy4e5" path="res://art/enemyFlyingAlt_2.png" id="2_o8lmi"]
+[ext_resource type="Texture2D" uid="uid://bo5pwboq2a70y" path="res://art/enemySwimming_1.png" id="3_ajltq"]
+[ext_resource type="Texture2D" uid="uid://cirnrjnrodjum" path="res://art/enemySwimming_2.png" id="4_wcqy2"]
+[ext_resource type="Texture2D" uid="uid://m6q018tvg51j" path="res://art/enemyWalking_1.png" id="5_uryum"]
+[ext_resource type="Texture2D" uid="uid://7vryk7432wcf" path="res://art/enemyWalking_2.png" id="6_lnslj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2dyut"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_poyks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_o8lmi")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ajltq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wcqy2")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_uryum")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lnslj")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ajltq"]
+radius = 37.0134
+height = 99.8956
+
+[node name="Mob" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_o8lmi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_2dyut")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ajltq")
+
+[node name="Visibility" type="VisibleOnScreenEnabler2D" parent="."]
+
+[connection signal="screen_exited" from="Visibility" to="." method="_on_visibility_screen_exited"]
