@@ -51,6 +51,7 @@ height = 99.8956
 [node name="Mob" type="RigidBody2D"]
 gravity_scale = 0.0
 script = ExtResource("1_o8lmi")
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.75, 0.75)

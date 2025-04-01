@@ -5,9 +5,7 @@ var screen_size
 
 func _ready():
 	screen_size = get_viewport_rect().size
-	hide()
 func _process(delta):
-	show()
 	var velocity = Vector2()
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += 1
@@ -35,9 +33,9 @@ func _process(delta):
 		
 
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body):
 	hide()
-	emit_signal("hit")
+	hit.emit()
 	$CollisionShape2D.set_deferred("disabled", true)
 	
 func start(pos):
