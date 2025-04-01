@@ -22,7 +22,7 @@ position = Vector2(-195, -101)
 position = Vector2(-195, -101)
 
 [node name="MobTimer" type="Timer" parent="."]
-wait_time = 0.05
+wait_time = 0.15
 
 [node name="ScoreTimer" type="Timer" parent="."]
 
